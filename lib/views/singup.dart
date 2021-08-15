@@ -2,6 +2,8 @@ import 'package:content/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import 'interests.dart';
+
 class Singup extends StatefulWidget {
   @override
   _SingupState createState() => _SingupState();
@@ -26,7 +28,10 @@ class _SingupState extends State<Singup> {
             child: Center(
               child: Text(
                 'B O O K',
-                style: TextStyle(fontSize: 50, color: Colors.white),
+                style: TextStyle(
+                    fontSize: 60,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500),
               ),
             ),
           ),
@@ -102,7 +107,12 @@ class _SingupState extends State<Singup> {
                         height: 30,
                       ),
                       MaterialButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Interests()));
+                        },
                         child: Container(
                           height: 40,
                           width: double.infinity,

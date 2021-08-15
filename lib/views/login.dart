@@ -28,7 +28,10 @@ class _LoginState extends State<Login> {
             child: Center(
               child: Text(
                 'B O O K',
-                style: TextStyle(fontSize: 50, color: Colors.white),
+                style: TextStyle(
+                    fontSize: 60,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500),
               ),
             ),
           ),
@@ -60,7 +63,7 @@ class _LoginState extends State<Login> {
                         decoration: InputDecoration(
                             hintText: 'Name',
                             labelText: 'user Name',
-                            prefixIcon: Icon(Icons.email)),
+                            prefixIcon: Icon(Icons.verified_user)),
                       ),
                       SizedBox(
                         height: 40,
