@@ -1,5 +1,3 @@
-import 'package:content/views/login.dart';
-import 'package:content/views/singup.dart';
 import 'package:content/views/splash.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +6,8 @@ import 'constants/app_colors.dart';
 void main() {
   runApp(MyApp());
 }
+
+// update
 
 class MyApp extends StatelessWidget {
   @override

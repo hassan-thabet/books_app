@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:content/constants/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'home.dart';
 import 'login.dart';
 
 class Splash extends StatefulWidget {
