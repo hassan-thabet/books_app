@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'home.dart';
+import 'login.dart';
 
 class Splash extends StatefulWidget {
   @override
@@ -8,15 +9,12 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
-
-  startTimer()
-  {
-    return Timer(Duration(seconds: 3), () =>
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => Home())
-    ));
+  startTimer() {
+    return Timer(
+        Duration(seconds: 3),
+        () => Navigator.of(context)
+            .pushReplacement(MaterialPageRoute(builder: (context) => Login())));
   }
-
 
   @override
   void initState() {
@@ -26,16 +24,12 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/icons/logo.png',
-              scale: 8
-            ),
+            Image.asset('assets/icons/logo.png', scale: 8),
           ],
         ),
       ),
