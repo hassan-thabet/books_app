@@ -12,7 +12,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   bool secure = true;
   bool checkboxValue = true;
-  IconData? icon ;
+  IconData? icon;
 
   @override
   void initState() {
@@ -38,25 +38,26 @@ class _LoginState extends State<Login> {
                   RotationTransition(
                     turns: AlwaysStoppedAnimation(270 / 360),
                     child: Text(
-                        'b'.toUpperCase(),
-                        style: TextStyle(
-                            fontSize: 60,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                            letterSpacing: 12
-                        ),
+                      'b'.toUpperCase(),
+                      style: TextStyle(
+                          fontSize: 60,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 12),
                     ),
                   ),
                   Text(
                     'OO',
+
                     /// هنا زودنا دوت ابر كيس علشان يكبرلي الحروف بدل ما اكتبها انا كبيره
                     style: TextStyle(
                         fontSize: 50,
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
                         letterSpacing: 12
+
                         ///  وهنا زودنا ليتر سبيس و دي بتعمل مسافه ما بين الحروف و بعضها
-                    ),
+                        ),
                   ),
                   RotationTransition(
                     turns: AlwaysStoppedAnimation(270 / 360),
@@ -66,8 +67,7 @@ class _LoginState extends State<Login> {
                           fontSize: 60,
                           color: Colors.white,
                           fontWeight: FontWeight.w500,
-                          letterSpacing: 12
-                      ),
+                          letterSpacing: 12),
                     ),
                   ),
                 ],
@@ -92,8 +92,8 @@ class _LoginState extends State<Login> {
                           height: 20,
                         ),
                         Text(
-                          'Login',
-                          style: TextStyle(fontSize: 30 , color: DARK_TEXT),
+                          'Welcome Back , Log-in',
+                          style: TextStyle(fontSize: 26, color: DARK_TEXT),
                         ),
                         TextFormField(
                           keyboardType: TextInputType.text,
@@ -103,13 +103,11 @@ class _LoginState extends State<Login> {
                               prefixIcon: Icon(Icons.email_outlined)),
                         ),
                         SizedBox(
-                          height: 40,
+                          height: 20,
                         ),
                         TextFormField(
                           keyboardType: TextInputType.visiblePassword,
                           decoration: InputDecoration(
-
-
                             hintText: 'Password',
                             labelText: 'Password',
                             prefixIcon: Icon(Icons.lock_outline),
@@ -119,49 +117,39 @@ class _LoginState extends State<Login> {
                                     secure = !secure;
                                   });
                                 },
-                                icon: (secure == true )
+                                icon: (secure == true)
                                     ? Icon(Icons.visibility)
                                     : Icon(Icons.visibility_off)
 
                                 ///  اللي بين القوصين فوق ده الشرط
-                              ///  و علامه الاستفهام دي معناها لو الشرط هتحقق
-                              ///  و بعدها علامه ال : دي معناها لو الشرط متحققش
+                                ///  و علامه الاستفهام دي معناها لو الشرط هتحقق
+                                ///  و بعدها علامه ال : دي معناها لو الشرط متحققش
 
-
-                            ),
+                                ),
                           ),
                           obscureText: secure,
-
                         ),
                         SizedBox(
                           height: 20,
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Checkbox(
-                              checkColor: UNSELECTED_ICONS,
-                              activeColor: APP_MAIN_COLOR,
-                              value: checkboxValue,
-                              onChanged: (bool? value)
-                                {
-                                  setState(() {
-                                    checkboxValue = value!;
-                                  });
-
-                                },
+                            Text(
+                              'Forget password? ',
+                              style: TextStyle(color: DARK_TEXT),
                             ),
-                            Text('Remember me'),
-                            Spacer(),
-                            TextButton(
-                              onPressed: ()
-                              {
+                            InkWell(
+                              child: Text(
+                                'Reset',
+                                style: TextStyle(
+                                  color: GRADIENT_END,
+                                ),
+                              ),
+                              onTap: () {
                                 // TODO: Remember password method
                               },
-                              child: Text(
-                                'Forget password !',
-                                style: TextStyle(color: APP_MAIN_COLOR),
-                              ),
-                            )
+                            ),
                           ],
                         ),
                         SizedBox(
@@ -169,8 +157,10 @@ class _LoginState extends State<Login> {
                         ),
                         MaterialButton(
                           onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => Home()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Home()));
                           },
                           child: Container(
                             width: double.infinity,
@@ -179,16 +169,94 @@ class _LoginState extends State<Login> {
                                 color: APP_MAIN_COLOR),
                             child: Center(
                                 child: Padding(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Text(
-                              'Login',
-                              style: TextStyle(fontSize: 22, color: Colors.white),
-                            ),
-                                )),
+                              padding: const EdgeInsets.all(10),
+                              child: Text(
+                                'Login',
+                                style: TextStyle(
+                                    fontSize: 22, color: Colors.white),
+                              ),
+                            )),
                           ),
                         ),
                         SizedBox(
-                          height:10,
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: MaterialButton(
+                                padding: EdgeInsets.only(right: 4 , left: 16),
+                                onPressed: () {},
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                        color: Colors.black26,
+                                        width: 1,
+                                      ),
+                                      color: Colors.transparent,
+                                  ),
+                                  child: Center(
+                                      child: Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Continue with ',
+                                          style: TextStyle(
+                                              fontSize: 12, color: DARK_TEXT),
+                                        ),
+                                        Image.asset(
+                                          'assets/icons/google.png',
+                                          width: 24,
+                                          height: 24,
+                                        ),
+                                      ],
+                                    ),
+                                  )),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: MaterialButton(
+                                padding: EdgeInsets.only(right: 16 , left: 4),
+                                onPressed: () {},
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                        color: Colors.black26,
+                                        width: 1,
+                                      ),
+                                      color: Colors.transparent,
+                                  ),
+                                  child: Center(
+                                      child: Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Continue with ',
+                                          style: TextStyle(
+                                              fontSize: 12, color: DARK_TEXT),
+                                        ),
+                                        Image.asset(
+                                          'assets/icons/facebook.png',
+                                          width: 24,
+                                          height: 24,
+                                        ),
+                                      ],
+                                    ),
+                                  )),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -203,7 +271,7 @@ class _LoginState extends State<Login> {
                               },
                               child: Text(
                                 'Signup',
-                                style: TextStyle(color: APP_MAIN_COLOR),
+                                style: TextStyle(color: GRADIENT_END),
                               ),
                             )
                           ],
