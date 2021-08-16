@@ -5,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 
 class Browse extends StatelessWidget {
   const Browse({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     var dimensions = MediaQuery.of(context).size;

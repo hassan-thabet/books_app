@@ -16,8 +16,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Content - Download & Read Free Books',
       theme: ThemeData(
+        platform: TargetPlatform.iOS,
         fontFamily: 'Georama',
         scaffoldBackgroundColor: BACKGROUND_COLOR,
+        primaryColor: APP_MAIN_COLOR,
+
       ),
       home: Splash(),
     );
