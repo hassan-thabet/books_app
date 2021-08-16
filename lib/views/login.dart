@@ -10,7 +10,10 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  bool scurte = true;
+  bool secure = true;
+  bool checkboxValue = true;
+  IconData? icon ;
+
   @override
   void initState() {
     super.initState();
@@ -20,124 +23,199 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: APP_MAIN_COLOR,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(
-            child: Center(
-              child: Text(
-                'B O O K',
-                style: TextStyle(
-                    fontSize: 60,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500),
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 60,
+            ),
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  RotationTransition(
+                    turns: AlwaysStoppedAnimation(270 / 360),
+                    child: Text(
+                        'b'.toUpperCase(),
+                        style: TextStyle(
+                            fontSize: 60,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: 12
+                        ),
+                    ),
+                  ),
+                  Text(
+                    'OO',
+                    /// هنا زودنا دوت ابر كيس علشان يكبرلي الحروف بدل ما اكتبها انا كبيره
+                    style: TextStyle(
+                        fontSize: 50,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 12
+                        ///  وهنا زودنا ليتر سبيس و دي بتعمل مسافه ما بين الحروف و بعضها
+                    ),
+                  ),
+                  RotationTransition(
+                    turns: AlwaysStoppedAnimation(270 / 360),
+                    child: Text(
+                      'k'.toUpperCase(),
+                      style: TextStyle(
+                          fontSize: 60,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 12
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-          SizedBox(
-            height: 90,
-          ),
-          Expanded(
-            flex: 2,
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40)),
-                  color: Colors.white),
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        'Login',
-                        style: TextStyle(fontSize: 30),
-                      ),
-                      TextFormField(
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                            hintText: 'Name',
-                            labelText: 'user Name',
-                            prefixIcon: Icon(Icons.verified_user)),
-                      ),
-                      SizedBox(
-                        height: 40,
-                      ),
-                      TextFormField(
-                        keyboardType: TextInputType.visiblePassword,
-                        decoration: InputDecoration(
-                          hintText: 'Password',
-                          labelText: 'Password',
-                          prefixIcon: Icon(Icons.lock),
-                          suffixIcon: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  scurte = !scurte;
-                                });
-                              },
-                              icon: Icon(Icons.remove_red_eye)),
+            SizedBox(
+              height: 60,
+            ),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(40),
+                        topRight: Radius.circular(40)),
+                    color: Colors.white),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 20,
                         ),
-                        obscureText: scurte,
-                      ),
-                      TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'did you forget your password',
-                            style: TextStyle(color: DARK_TEXT),
-                          )),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      MaterialButton(
-                        onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Home()));
-                        },
-                        child: Container(
+                        Text(
+                          'Login',
+                          style: TextStyle(fontSize: 30 , color: DARK_TEXT),
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.text,
+                          decoration: InputDecoration(
+                              hintText: 'E-mail',
+                              labelText: 'E-mail',
+                              prefixIcon: Icon(Icons.email_outlined)),
+                        ),
+                        SizedBox(
                           height: 40,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: APP_MAIN_COLOR),
-                          child: Center(
-                              child: Text(
-                            'Login',
-                            style: TextStyle(fontSize: 30, color: Colors.white),
-                          )),
                         ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        children: [
-                          Text('If you do not have an account :'),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Singup()));
-                            },
-                            child: Text(
-                              'Create an account',
-                              style: TextStyle(color: APP_MAIN_COLOR),
+                        TextFormField(
+                          keyboardType: TextInputType.visiblePassword,
+                          decoration: InputDecoration(
+
+
+                            hintText: 'Password',
+                            labelText: 'Password',
+                            prefixIcon: Icon(Icons.lock_outline),
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    secure = !secure;
+                                  });
+                                },
+                                icon: (secure == true )
+                                    ? Icon(Icons.visibility)
+                                    : Icon(Icons.visibility_off)
+
+                                ///  اللي بين القوصين فوق ده الشرط
+                              ///  و علامه الاستفهام دي معناها لو الشرط هتحقق
+                              ///  و بعدها علامه ال : دي معناها لو الشرط متحققش
+
+
                             ),
-                          )
-                        ],
-                      ),
-                    ],
+                          ),
+                          obscureText: secure,
+
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          children: [
+                            Checkbox(
+                              checkColor: UNSELECTED_ICONS,
+                              activeColor: APP_MAIN_COLOR,
+                              value: checkboxValue,
+                              onChanged: (bool? value)
+                                {
+                                  setState(() {
+                                    checkboxValue = value!;
+                                  });
+
+                                },
+                            ),
+                            Text('Remember me'),
+                            Spacer(),
+                            TextButton(
+                              onPressed: ()
+                              {
+                                // TODO: Remember password method
+                              },
+                              child: Text(
+                                'Forget password !',
+                                style: TextStyle(color: APP_MAIN_COLOR),
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: 80,
+                        ),
+                        MaterialButton(
+                          onPressed: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => Home()));
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: APP_MAIN_COLOR),
+                            child: Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Text(
+                              'Login',
+                              style: TextStyle(fontSize: 22, color: Colors.white),
+                            ),
+                                )),
+                          ),
+                        ),
+                        SizedBox(
+                          height:10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Don\'t have an account ?'),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Singup()));
+                              },
+                              child: Text(
+                                'Signup',
+                                style: TextStyle(color: APP_MAIN_COLOR),
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
