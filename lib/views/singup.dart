@@ -1,8 +1,9 @@
+import 'package:content/components/buttonStart.dart';
 import 'package:content/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'interests.dart';
+import 'name.dart';
 
 class Singup extends StatefulWidget {
   @override
@@ -63,7 +64,11 @@ class _SingupState extends State<Singup> {
                         decoration: InputDecoration(
                             hintText: 'Email Address',
                             labelText: 'Email',
-                            prefixIcon: Icon(Icons.email)),
+                            labelStyle: TextStyle(color: APP_MAIN_COLOR),
+                            prefixIcon: Icon(
+                              Icons.email,
+                              color: APP_MAIN_COLOR,
+                            )),
                       ),
                       SizedBox(
                         height: 30,
@@ -73,14 +78,17 @@ class _SingupState extends State<Singup> {
                         decoration: InputDecoration(
                           hintText: 'Password',
                           labelText: 'Password',
-                          prefixIcon: Icon(Icons.lock),
+                          labelStyle: TextStyle(color: APP_MAIN_COLOR),
+                          prefixIcon: Icon(Icons.lock, color: APP_MAIN_COLOR),
                           suffixIcon: IconButton(
                               onPressed: () {
                                 setState(() {
                                   scurte = !scurte;
                                 });
                               },
-                              icon: Icon(Icons.remove_red_eye)),
+                              icon: (scurte == true)
+                                  ? Icon(Icons.visibility)
+                                  : Icon(Icons.visibility_off)),
                         ),
                         obscureText: scurte,
                       ),
@@ -92,40 +100,32 @@ class _SingupState extends State<Singup> {
                         decoration: InputDecoration(
                           hintText: 'confirm password',
                           labelText: 'confirm password',
-                          prefixIcon: Icon(Icons.lock),
+                          labelStyle: TextStyle(color: APP_MAIN_COLOR),
+                          prefixIcon: Icon(Icons.lock, color: APP_MAIN_COLOR),
                           suffixIcon: IconButton(
                               onPressed: () {
                                 setState(() {
                                   scurte = !scurte;
                                 });
                               },
-                              icon: Icon(Icons.remove_red_eye)),
+                              icon: (scurte == true)
+                                  ? Icon(Icons.visibility)
+                                  : Icon(Icons.visibility_off)),
                         ),
                         obscureText: scurte,
                       ),
                       SizedBox(
                         height: 30,
                       ),
-                      MaterialButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Interests()));
-                        },
-                        child: Container(
-                          height: 40,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: APP_MAIN_COLOR),
-                          child: Center(
-                              child: Text(
-                            'Next',
-                            style: TextStyle(fontSize: 25, color: Colors.white),
-                          )),
-                        ),
-                      ),
+                      //عملت يسطا الكمبونت للبوتن بس بص  علي لو عايز برضك تصيف حاجة
+                      ButtonStart(
+                          Function: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Name()));
+                          },
+                          TextButton: 'Next')
                     ],
                   ),
                 ),

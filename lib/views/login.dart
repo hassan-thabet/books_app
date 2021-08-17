@@ -95,12 +95,19 @@ class _LoginState extends State<Login> {
                           'Welcome Back , Log-in',
                           style: TextStyle(fontSize: 26, color: DARK_TEXT),
                         ),
+                        SizedBox(
+                          height: 20,
+                        ),
                         TextFormField(
-                          keyboardType: TextInputType.text,
+                          keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
-                              hintText: 'E-mail',
-                              labelText: 'E-mail',
-                              prefixIcon: Icon(Icons.email_outlined)),
+                              hintText: 'Email Address',
+                              labelStyle: TextStyle(color: APP_MAIN_COLOR),
+                              labelText: 'Email',
+                              prefixIcon: Icon(
+                                Icons.email,
+                                color: APP_MAIN_COLOR,
+                              )),
                         ),
                         SizedBox(
                           height: 20,
@@ -108,25 +115,23 @@ class _LoginState extends State<Login> {
                         TextFormField(
                           keyboardType: TextInputType.visiblePassword,
                           decoration: InputDecoration(
-                            hintText: 'Password',
-                            labelText: 'Password',
-                            prefixIcon: Icon(Icons.lock_outline),
-                            suffixIcon: IconButton(
+                              hintText: 'Password',
+                              labelText: 'Password',
+                              labelStyle: TextStyle(color: APP_MAIN_COLOR),
+                              prefixIcon: Icon(
+                                Icons.lock,
+                                color: APP_MAIN_COLOR,
+                              ),
+                              suffixIcon: IconButton(
+                                icon: (secure == true)
+                                    ? Icon(Icons.visibility)
+                                    : Icon(Icons.visibility_off),
                                 onPressed: () {
                                   setState(() {
                                     secure = !secure;
                                   });
                                 },
-                                icon: (secure == true)
-                                    ? Icon(Icons.visibility)
-                                    : Icon(Icons.visibility_off)
-
-                                ///  اللي بين القوصين فوق ده الشرط
-                                ///  و علامه الاستفهام دي معناها لو الشرط هتحقق
-                                ///  و بعدها علامه ال : دي معناها لو الشرط متحققش
-
-                                ),
-                          ),
+                              )),
                           obscureText: secure,
                         ),
                         SizedBox(
@@ -147,6 +152,7 @@ class _LoginState extends State<Login> {
                                 ),
                               ),
                               onTap: () {
+                                // ignore: todo
                                 // TODO: Remember password method
                               },
                             ),
@@ -185,22 +191,23 @@ class _LoginState extends State<Login> {
                           children: [
                             Expanded(
                               child: MaterialButton(
-                                padding: EdgeInsets.only(right: 4 , left: 16),
+                                padding: EdgeInsets.only(right: 4, left: 16),
                                 onPressed: () {},
                                 child: Container(
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(
-                                        color: Colors.black26,
-                                        width: 1,
-                                      ),
-                                      color: Colors.transparent,
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                      color: Colors.black26,
+                                      width: 1,
+                                    ),
+                                    color: Colors.transparent,
                                   ),
                                   child: Center(
                                       child: Padding(
                                     padding: const EdgeInsets.all(10),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Text(
                                           'Continue with ',
@@ -220,22 +227,23 @@ class _LoginState extends State<Login> {
                             ),
                             Expanded(
                               child: MaterialButton(
-                                padding: EdgeInsets.only(right: 16 , left: 4),
+                                padding: EdgeInsets.only(right: 16, left: 4),
                                 onPressed: () {},
                                 child: Container(
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(
-                                        color: Colors.black26,
-                                        width: 1,
-                                      ),
-                                      color: Colors.transparent,
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                      color: Colors.black26,
+                                      width: 1,
+                                    ),
+                                    color: Colors.transparent,
                                   ),
                                   child: Center(
                                       child: Padding(
                                     padding: const EdgeInsets.all(10),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Text(
                                           'Continue with ',

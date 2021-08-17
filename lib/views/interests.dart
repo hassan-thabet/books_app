@@ -1,5 +1,6 @@
+import 'package:content/components/buttonStart.dart';
 import 'package:content/constants/app_colors.dart';
-import 'package:content/views/name.dart';
+import 'package:content/views/home.dart';
 import 'package:flutter/material.dart';
 
 class Interests extends StatefulWidget {
@@ -8,6 +9,7 @@ class Interests extends StatefulWidget {
 }
 
 class _InterestsState extends State<Interests> {
+  bool color = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,13 +52,20 @@ class _InterestsState extends State<Interests> {
                           backgroundColor: Colors.black,
                           radius: 70,
                         ),
-                        CircleAvatar(
-                          child: Text(
-                            'Writing',
-                            style: TextStyle(color: Colors.black),
+                        MaterialButton(
+                          onPressed: () {
+                            setState(() {
+                              color = true;
+                            });
+                          },
+                          child: CircleAvatar(
+                            child: Text(
+                              'Writing',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                            backgroundColor: color ? addColor : Colors.white,
+                            radius: 65,
                           ),
-                          backgroundColor: Colors.white,
-                          radius: 65,
                         ),
                       ],
                     ),
@@ -70,13 +79,20 @@ class _InterestsState extends State<Interests> {
                           backgroundColor: Colors.black,
                           radius: 70,
                         ),
-                        CircleAvatar(
-                          child: Text(
-                            'Reader',
-                            style: TextStyle(color: Colors.black),
+                        MaterialButton(
+                          onPressed: () {
+                            setState(() {
+                              color = false;
+                            });
+                          },
+                          child: CircleAvatar(
+                            child: Text(
+                              'Reader',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                            backgroundColor: color ? Colors.white : addColor,
+                            radius: 65,
                           ),
-                          backgroundColor: Colors.white,
-                          radius: 65,
                         ),
                       ],
                     ),
@@ -85,24 +101,14 @@ class _InterestsState extends State<Interests> {
                 SizedBox(
                   height: 30,
                 ),
-                MaterialButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Name()));
-                  },
-                  child: Container(
-                    height: 40,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.white),
-                    child: Center(
-                        child: Text(
-                      'Next',
-                      style: TextStyle(fontSize: 25, color: APP_MAIN_COLOR),
-                    )),
-                  ),
-                ),
+                ButtonStart(
+                    color: Colors.white,
+                    textcolor: APP_MAIN_COLOR,
+                    TextButton: 'Finish',
+                    Function: () {
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => Home()));
+                    })
               ],
             ),
           ),
