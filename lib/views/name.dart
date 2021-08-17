@@ -1,7 +1,7 @@
+import 'package:content/components/button_start.dart';
 import 'package:content/constants/app_colors.dart';
 import 'package:flutter/material.dart';
-
-import 'home.dart';
+import 'interests.dart';
 
 class Name extends StatelessWidget {
   @override
@@ -47,6 +47,7 @@ class Name extends StatelessWidget {
                         decoration: InputDecoration(
                           hintText: ' First name',
                           labelText: 'First name',
+                          labelStyle: TextStyle(color: APP_MAIN_COLOR),
                         )),
                     SizedBox(
                       height: 40,
@@ -56,29 +57,20 @@ class Name extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: 'last name',
                         labelText: 'last name',
+                        labelStyle: TextStyle(color: APP_MAIN_COLOR),
                       ),
                     ),
                     SizedBox(
                       height: 20,
                     ),
-                    MaterialButton(
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Home()));
-                      },
-                      child: Container(
-                        height: 40,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: APP_MAIN_COLOR),
-                        child: Center(
-                            child: Text(
-                          'Finshe',
-                          style: TextStyle(fontSize: 30, color: Colors.white),
-                        )),
-                      ),
-                    ),
+                    ButtonStart(
+                        TextButton: 'Naxt',
+                        Function: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Interests()));
+                        }),
                     SizedBox(
                       height: 20,
                     )
