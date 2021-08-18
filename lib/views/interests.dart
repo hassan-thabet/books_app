@@ -1,4 +1,4 @@
-import 'package:content/components/button_start.dart';
+import 'package:content/components/normal_button.dart';
 import 'package:content/constants/app_colors.dart';
 import 'package:content/views/home.dart';
 import 'package:flutter/material.dart';
@@ -101,14 +101,12 @@ class _InterestsState extends State<Interests> {
                 SizedBox(
                   height: 30,
                 ),
-                ButtonStart(
-                    color: Colors.white,
-                    textcolor: APP_MAIN_COLOR,
-                    TextButton: 'Finish',
-                    Function: () {
+                NormalButton(
+                    label: 'Finish',
+                    onTap: () {
                       Navigator.of(context).pushReplacement(
                           MaterialPageRoute(builder: (context) => Home()));
-                    })
+                    }),
               ],
             ),
           ),

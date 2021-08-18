@@ -2,6 +2,7 @@ import 'package:content/bloc/login/login_bloc.dart';
 import 'package:content/bloc/login/login_states.dart';
 import 'package:content/components/logo.dart';
 import 'package:content/components/my_text_field.dart';
+import 'package:content/components/normal_button.dart';
 import 'package:content/constants/app_colors.dart';
 import 'package:content/views/home.dart';
 import 'package:content/views/singup.dart';
@@ -134,28 +135,14 @@ class Login extends StatelessWidget {
                             SizedBox(
                               height: 80,
                             ),
-                            MaterialButton(
-                              onPressed: () {
+                            NormalButton(
+                              label: 'Login',
+                              onTap: () {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => Home()));
                               },
-                              child: Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: APP_MAIN_COLOR),
-                                child: Center(
-                                    child: Padding(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Text(
-                                    'Login',
-                                    style: TextStyle(
-                                        fontSize: 22, color: Colors.white),
-                                  ),
-                                )),
-                              ),
                             ),
                             SizedBox(
                               height: 10,

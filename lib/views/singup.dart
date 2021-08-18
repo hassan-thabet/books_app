@@ -1,4 +1,6 @@
-import 'package:content/components/button_start.dart';
+import 'package:content/components/normal_button.dart';
+import 'package:content/components/logo.dart';
+import 'package:content/components/my_text_field.dart';
 import 'package:content/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -11,7 +13,10 @@ class Singup extends StatefulWidget {
 }
 
 class _SingupState extends State<Singup> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   bool scurte = true;
+
   @override
   void initState() {
     super.initState();
@@ -21,118 +26,131 @@ class _SingupState extends State<Singup> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: APP_MAIN_COLOR,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(
-            child: Center(
-              child: Text(
-                'B O O K',
-                style: TextStyle(
-                    fontSize: 60,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500),
-              ),
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 60,
             ),
-          ),
-          SizedBox(
-            height: 90,
-          ),
-          Expanded(
-            flex: 2,
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40)),
-                  color: Colors.white),
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Singup',
-                        style: TextStyle(fontSize: 30),
-                      ),
-                      TextFormField(
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                            hintText: 'Email Address',
-                            labelText: 'Email',
-                            labelStyle: TextStyle(color: APP_MAIN_COLOR),
-                            prefixIcon: Icon(
-                              Icons.email,
-                              color: APP_MAIN_COLOR,
-                            )),
-                      ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      TextFormField(
-                        keyboardType: TextInputType.visiblePassword,
-                        decoration: InputDecoration(
-                          hintText: 'Password',
-                          labelText: 'Password',
-                          labelStyle: TextStyle(color: APP_MAIN_COLOR),
-                          prefixIcon: Icon(Icons.lock, color: APP_MAIN_COLOR),
-                          suffixIcon: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  scurte = !scurte;
-                                });
-                              },
-                              icon: (scurte == true)
-                                  ? Icon(Icons.visibility)
-                                  : Icon(Icons.visibility_off)),
+            Logo(),
+            SizedBox(
+              height: 60,
+            ),
+            Expanded(
+              flex: 2,
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(40),
+                        topRight: Radius.circular(40)),
+                    color: BACKGROUND_COLOR),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 20,
                         ),
-                        obscureText: scurte,
-                      ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      TextFormField(
-                        keyboardType: TextInputType.visiblePassword,
-                        decoration: InputDecoration(
-                          hintText: 'confirm password',
-                          labelText: 'confirm password',
-                          labelStyle: TextStyle(color: APP_MAIN_COLOR),
-                          prefixIcon: Icon(Icons.lock, color: APP_MAIN_COLOR),
-                          suffixIcon: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  scurte = !scurte;
-                                });
-                              },
-                              icon: (scurte == true)
-                                  ? Icon(Icons.visibility)
-                                  : Icon(Icons.visibility_off)),
+                        Text(
+                          'Create new account',
+                          style: TextStyle(fontSize: 26, color: DARK_TEXT),
                         ),
-                        obscureText: scurte,
-                      ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      //عملت يسطا الكمبونت للبوتن بس بص  علي لو عايز برضك تصيف حاجة
-                      ButtonStart(
-                          Function: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Name()));
-                          },
-                          TextButton: 'Next')
-                    ],
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                          padding:
+                              EdgeInsets.symmetric(vertical: 4, horizontal: 24),
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: APP_MAIN_COLOR.withAlpha(100),
+                                blurRadius: 4,
+                                offset: Offset(1, 2),
+                              )
+                            ],
+                          ),
+                          child: Column(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 14, vertical: 10),
+                                child: MyTextField(
+                                    hint: "Email",
+                                    iconData: Icons.email_outlined,
+                                    controller: emailController,
+                                    isSecure: false),
+                              ),
+                              Divider(
+                                height: 2,
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(
+                                    top: 10, left: 14, bottom: 10, right: 0),
+                                child: MyTextField(
+                                  hint: "Password",
+                                  iconData: Icons.lock_outline,
+                                  controller: passwordController,
+                                  isSecure: scurte,
+                                  visibilityOnTap: () {
+                                    setState(() {
+                                      scurte = !scurte;
+                                    });
+                                  },
+                                  suffixIconData: (scurte == true)
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                ),
+                              ),
+                              Divider(
+                                height: 2,
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(
+                                    top: 10, left: 14, bottom: 10, right: 0),
+                                child: MyTextField(
+                                  hint: "Confirm Password",
+                                  iconData: Icons.lock_outline,
+                                  controller: passwordController,
+                                  isSecure: scurte,
+                                  visibilityOnTap: () {
+                                    setState(() {
+                                      scurte = !scurte;
+                                    });
+                                  },
+                                  suffixIconData: (scurte == true)
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        NormalButton(
+                            label: 'Next',
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Name()));
+                            }),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -1,4 +1,4 @@
-import 'package:content/components/button_start.dart';
+import 'package:content/components/normal_button.dart';
 import 'package:content/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'interests.dart';
@@ -63,9 +63,9 @@ class Name extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
-                    ButtonStart(
-                        TextButton: 'Naxt',
-                        Function: () {
+                    NormalButton(
+                        label: 'Next',
+                        onTap: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
