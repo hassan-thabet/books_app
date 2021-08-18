@@ -13,6 +13,7 @@ class NormalButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
       onPressed: onTap,
       child: Container(
         width: double.infinity,

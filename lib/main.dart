@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bloc/login/login_bloc.dart';
+import 'bloc/signUp/signUp_bloc.dart';
 import 'constants/app_colors.dart';
 
 void main() {
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => LoginBloc()),
+        BlocProvider(create: (context) => SignUpBloc()),
       ],
 
       child: MaterialApp(
