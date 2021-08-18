@@ -3,6 +3,7 @@ import 'package:content/bloc/login/login_states.dart';
 import 'package:content/components/logo.dart';
 import 'package:content/components/my_text_field.dart';
 import 'package:content/components/normal_button.dart';
+import 'package:content/components/social_auth.dart';
 import 'package:content/constants/app_colors.dart';
 import 'package:content/views/home.dart';
 import 'package:content/views/singup.dart';
@@ -52,86 +53,89 @@ class Login extends StatelessWidget {
                             SizedBox(
                               height: 20,
                             ),
-                            Container(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 4, horizontal: 24),
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: APP_MAIN_COLOR.withAlpha(100),
-                                    blurRadius: 4,
-                                    offset: Offset(1, 2),
-                                  )
-                                ],
-                              ),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 14, vertical: 10),
-                                    child: MyTextField(
-                                        hint: "Email",
-                                        iconData: Icons.email_outlined,
-                                        controller: LoginBloc.get(context)
-                                            .emailController,
-                                        isSecure: false),
-                                  ),
-                                  Divider(
-                                    height: 2,
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.only(
-                                        top: 10,
-                                        left: 14,
-                                        bottom: 10,
-                                        right: 0),
-                                    child: MyTextField(
-                                      hint: "Password",
-                                      iconData: Icons.lock_outline,
-                                      controller: LoginBloc.get(context)
-                                          .passwordController,
-                                      isSecure:
-                                          LoginBloc.get(context).visibility,
-                                      visibilityOnTap: () {
-                                        LoginBloc.get(context)
-                                            .visibilityOnTap();
-                                      },
-                                      suffixIconData:
-                                          (LoginBloc.get(context).visibility ==
-                                                  true)
-                                              ? Icons.visibility
-                                              : Icons.visibility_off,
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 12),
+                              child: Container(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 4, horizontal: 24),
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: APP_MAIN_COLOR.withAlpha(100),
+                                      blurRadius: 4,
+                                      offset: Offset(1, 2),
+                                    )
+                                  ],
+                                ),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 14, vertical: 10),
+                                      child: MyTextField(
+                                          hint: "Email",
+                                          iconData: Icons.email_outlined,
+                                          controller: LoginBloc.get(context)
+                                              .emailController,
+                                          isSecure: false),
                                     ),
-                                  ),
-                                ],
+                                    Divider(
+                                      height: 2,
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.only(
+                                          top: 10,
+                                          left: 14,
+                                          bottom: 10,
+                                          right: 0),
+                                      child: MyTextField(
+                                        hint: "Password",
+                                        iconData: Icons.lock_outline,
+                                        controller: LoginBloc.get(context)
+                                            .passwordController,
+                                        isSecure:
+                                            LoginBloc.get(context).visibility,
+                                        visibilityOnTap: () {
+                                          LoginBloc.get(context)
+                                              .visibilityOnTap();
+                                        },
+                                        suffixIconData:
+                                            (LoginBloc.get(context).visibility ==
+                                                    true)
+                                                ? Icons.visibility
+                                                : Icons.visibility_off,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                             SizedBox(
                               height: 20,
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text(
-                                  'Forget password? ',
-                                  style: TextStyle(color: DARK_TEXT),
-                                ),
-                                InkWell(
-                                  child: Text(
-                                    'Reset',
-                                    style: TextStyle(
-                                      color: GRADIENT_END,
-                                    ),
-                                  ),
-                                  onTap: () {
-                                    // TODO: Remember password method
-                                  },
-                                ),
-                              ],
-                            ),
+                            // Row(
+                            //   mainAxisAlignment: MainAxisAlignment.end,
+                            //   children: [
+                            //     Text(
+                            //       'Forget password? ',
+                            //       style: TextStyle(color: DARK_TEXT),
+                            //     ),
+                            //     InkWell(
+                            //       child: Text(
+                            //         'Reset',
+                            //         style: TextStyle(
+                            //           color: GRADIENT_END,
+                            //         ),
+                            //       ),
+                            //       onTap: () {
+                            //         // TODO: Remember password method
+                            //       },
+                            //     ),
+                            //   ],
+                            // ),
                             SizedBox(
                               height: 80,
                             ),
@@ -147,86 +151,7 @@ class Login extends StatelessWidget {
                             SizedBox(
                               height: 10,
                             ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: MaterialButton(
-                                    padding:
-                                        EdgeInsets.only(right: 4, left: 16),
-                                    onPressed: () {},
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(
-                                          color: Colors.black26,
-                                          width: 1,
-                                        ),
-                                        color: Colors.transparent,
-                                      ),
-                                      child: Center(
-                                          child: Padding(
-                                        padding: const EdgeInsets.all(10),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              'Continue with ',
-                                              style: TextStyle(
-                                                  fontSize: 12,
-                                                  color: DARK_TEXT),
-                                            ),
-                                            Image.asset(
-                                              'assets/icons/google.png',
-                                              width: 24,
-                                              height: 24,
-                                            ),
-                                          ],
-                                        ),
-                                      )),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: MaterialButton(
-                                    padding:
-                                        EdgeInsets.only(right: 16, left: 4),
-                                    onPressed: () {},
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(
-                                          color: Colors.black26,
-                                          width: 1,
-                                        ),
-                                        color: Colors.transparent,
-                                      ),
-                                      child: Center(
-                                          child: Padding(
-                                        padding: const EdgeInsets.all(10),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              'Continue with ',
-                                              style: TextStyle(
-                                                  fontSize: 12,
-                                                  color: DARK_TEXT),
-                                            ),
-                                            Image.asset(
-                                              'assets/icons/facebook.png',
-                                              width: 24,
-                                              height: 24,
-                                            ),
-                                          ],
-                                        ),
-                                      )),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                            SocialAuth(googleOnTap: (){}, facebookOnTap: (){}),
                             SizedBox(
                               height: 10,
                             ),
@@ -239,7 +164,7 @@ class Login extends StatelessWidget {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Singup()));
+                                            builder: (context) => SignUp()));
                                   },
                                   child: Text(
                                     'Signup',
