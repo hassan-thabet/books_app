@@ -111,12 +111,17 @@ class SignUp extends StatelessWidget {
                                       child: MyTextField(
                                         hint: "Confirm Password",
                                         iconData: Icons.lock_outline,
-                                        controller: SignUpBloc.get(context).passwordController,
-                                        isSecure: SignUpBloc.get(context).visibility,
+                                        controller: SignUpBloc.get(context)
+                                            .confirmPasswordController,
+                                        isSecure:
+                                            SignUpBloc.get(context).visibility,
                                         visibilityOnTap: () {
-                                          SignUpBloc.get(context).visibilityOnTap();
+                                          SignUpBloc.get(context)
+                                              .visibilityOnTap();
                                         },
-                                        suffixIconData: (SignUpBloc.get(context).visibility == true)
+                                        suffixIconData: (SignUpBloc.get(context)
+                                                    .visibility ==
+                                                true)
                                             ? Icons.visibility
                                             : Icons.visibility_off,
                                       ),
@@ -131,6 +136,14 @@ class SignUp extends StatelessWidget {
                             NormalButton(
                                 label: 'Next',
                                 onTap: () {
+                                  SignUpBloc.get(context).userRegister(
+                                    email: SignUpBloc.get(context)
+                                        .emailController
+                                        .text,
+                                    password: SignUpBloc.get(context)
+                                        .confirmPasswordController
+                                        .text,
+                                  );
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(

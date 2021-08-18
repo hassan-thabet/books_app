@@ -33,6 +33,10 @@ dependencies:
   bloc: ^7.0.0
   flutter_bloc: ^7.0.0
 
+  # Firebase Packages
+  firebase_core: "^1.5.0"
+  firebase_auth: ^3.0.2
+
 
 dev_dependencies:
   flutter_test:

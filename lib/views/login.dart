@@ -142,6 +142,14 @@ class Login extends StatelessWidget {
                             NormalButton(
                               label: 'Login',
                               onTap: () {
+                                LoginBloc.get(context).userLogin(
+                                  email: LoginBloc.get(context)
+                                      .emailController
+                                      .text,
+                                  password: LoginBloc.get(context)
+                                      .passwordController
+                                      .text,
+                                );
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
