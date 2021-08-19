@@ -17,8 +17,7 @@ class SignUp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<SignUpBloc,SignUpStates>(
       listener: ( context, state) {  },
-      builder: ( context, Object? state)
-      {
+      builder: (context, state) {
         return Scaffold(
           backgroundColor: APP_MAIN_COLOR,
           body: SafeArea(
@@ -144,6 +143,16 @@ class SignUp extends StatelessWidget {
                                         .confirmPasswordController
                                         .text,
                                   );
+                                  if (SignUpBloc.get(context)
+                                      .emailController
+                                      .text
+                                      .isNotEmpty) {
+                                    SignUpBloc.get(context).saveUserEmail(
+                                        SignUpBloc.get(context)
+                                            .emailController
+                                            .text);
+                                  }
+
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
