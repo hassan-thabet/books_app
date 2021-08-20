@@ -2,14 +2,30 @@ import 'package:content/views/splash.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'bloc/login/login_bloc.dart';
-import 'bloc/signUp/signUp_bloc.dart';
+import 'bloc/register/register_bloc.dart';
 import 'constants/app_colors.dart';
 
 void main() {
-  // await Firebase.initializeApp();
   runApp(MyApp());
 }
+// void configLoading() {
+//   EasyLoading.instance
+//     ..displayDuration = const Duration(milliseconds: 2000)
+//     ..indicatorType = EasyLoadingIndicatorType.fadingCircle
+//     ..loadingStyle = EasyLoadingStyle.dark
+//     ..indicatorSize = 45.0
+//     ..radius = 10.0
+//     ..progressColor = Colors.yellow
+//     ..backgroundColor = Colors.green
+//     ..indicatorColor = Colors.yellow
+//     ..textColor = Colors.yellow
+//     ..maskColor = Colors.black.withOpacity(0.5)
+//     ..userInteractions = true
+//     ..dismissOnTap = false;
+//     // ..customAnimation = CustomAnimation();
+// }
 
 class MyApp extends StatelessWidget {
   @override
@@ -17,7 +33,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => LoginBloc()),
-        BlocProvider(create: (context) => SignUpBloc()),
+        BlocProvider(create: (context) => RegisterBloc()),
       ],
       child: FutureBuilder(
         future: Firebase.initializeApp(),
@@ -34,6 +50,7 @@ class MyApp extends StatelessWidget {
                   ),
             ),
             home: Splash(),
+            builder: EasyLoading.init(),
           );
         },
       ),

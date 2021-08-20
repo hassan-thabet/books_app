@@ -1,20 +1,39 @@
 import 'dart:io';
-
-import 'package:content/bloc/signUp/signUp_bloc.dart';
-import 'package:content/bloc/signUp/signUp_states.dart';
+import 'package:content/bloc/register/register_bloc.dart';
+import 'package:content/bloc/register/register_states.dart';
 import 'package:content/components/logo.dart';
 import 'package:content/components/my_text_field.dart';
 import 'package:content/components/normal_button.dart';
 import 'package:content/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'interests.dart';
 
 class Name extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SignUpBloc, SignUpStates>(
-      listener: (context, state) {},
+    return BlocConsumer<RegisterBloc, RegisterStates>(
+      listener: (context, state) {
+        if (state is NameLoadingState) {
+          EasyLoading.show(
+            status: 'loading...',
+            maskType: EasyLoadingMaskType.black,
+          );
+        }
+        if (state is NameErrorState) {
+          EasyLoading.showError('Failed with Error',
+              maskType: EasyLoadingMaskType.black);
+        }
+        if (state is NameSuccessState) {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => Interests()));
+          EasyLoading.showSuccess(
+            'The last step',
+            maskType: EasyLoadingMaskType.black,
+          );
+        }
+      },
       builder: (context, state) {
         return Scaffold(
           backgroundColor: APP_MAIN_COLOR,
@@ -54,7 +73,7 @@ class Name extends StatelessWidget {
                             Stack(
                               alignment: AlignmentDirectional.bottomStart,
                               children: [
-                                (SignUpBloc.get(context).pickedImage == null)
+                                (RegisterBloc.get(context).pickedImage == null)
                                     ? CircleAvatar(
                                         radius: 60,
                                         backgroundImage: AssetImage(
@@ -62,7 +81,7 @@ class Name extends StatelessWidget {
                                     : CircleAvatar(
                                         radius: 60,
                                         backgroundImage: FileImage(File(
-                                            SignUpBloc.get(context)
+                                            RegisterBloc.get(context)
                                                 .pickedImage!
                                                 .path))),
                                 Positioned(
@@ -72,7 +91,7 @@ class Name extends StatelessWidget {
                                     shape: CircleBorder(),
                                     elevation: 4.0,
                                     onPressed: () {
-                                      SignUpBloc.get(context).pickUserImage();
+                                      RegisterBloc.get(context).pickUserImage();
                                     },
                                     child: CircleAvatar(
                                       backgroundColor: GRADIENT_END,
@@ -117,7 +136,7 @@ class Name extends StatelessWidget {
                                           hint: "First name",
                                           iconData:
                                               Icons.person_outline_rounded,
-                                          controller: SignUpBloc.get(context)
+                                          controller: RegisterBloc.get(context)
                                               .firstNameController,
                                           isSecure: false),
                                     ),
@@ -133,7 +152,7 @@ class Name extends StatelessWidget {
                                       child: MyTextField(
                                         hint: "Last name",
                                         iconData: Icons.person_add_outlined,
-                                        controller: SignUpBloc.get(context)
+                                        controller: RegisterBloc.get(context)
                                             .lastNameController,
                                         isSecure: false,
                                       ),
@@ -150,7 +169,7 @@ class Name extends StatelessWidget {
                                       child: MyTextField(
                                         hint: "Phone number",
                                         iconData: Icons.phone_iphone_rounded,
-                                        controller: SignUpBloc.get(context)
+                                        controller: RegisterBloc.get(context)
                                             .phoneNumberController,
                                         isSecure: false,
                                       ),
@@ -165,21 +184,17 @@ class Name extends StatelessWidget {
                             NormalButton(
                                 label: 'Next',
                                 onTap: () {
-                                  SignUpBloc.get(context).saveUserInfo(
-                                    SignUpBloc.get(context)
+                                  RegisterBloc.get(context).saveUserInfo(
+                                    RegisterBloc.get(context)
                                         .firstNameController
                                         .text,
-                                    SignUpBloc.get(context)
+                                    RegisterBloc.get(context)
                                         .lastNameController
                                         .text,
-                                    SignUpBloc.get(context)
+                                    RegisterBloc.get(context)
                                         .phoneNumberController
                                         .text,
                                   );
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Interests()));
                                 }),
                             SizedBox(
                               height: 20,

@@ -1,5 +1,5 @@
-import 'package:content/bloc/signUp/signUp_bloc.dart';
-import 'package:content/bloc/signUp/signUp_states.dart';
+import 'package:content/bloc/register/register_bloc.dart';
+import 'package:content/bloc/register/register_states.dart';
 import 'package:content/components/normal_button.dart';
 import 'package:content/components/logo.dart';
 import 'package:content/components/my_text_field.dart';
@@ -8,15 +8,33 @@ import 'package:content/constants/app_colors.dart';
 import 'package:content/views/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'name.dart';
 
-
-class SignUp extends StatelessWidget {
-
+class Register extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SignUpBloc,SignUpStates>(
-      listener: ( context, state) {  },
+    return BlocConsumer<RegisterBloc, RegisterStates>(
+      listener: (context, state) {
+        if (state is RegisterLoadingState) {
+          EasyLoading.show(
+            status: 'loading...',
+            maskType: EasyLoadingMaskType.black,
+          );
+        }
+        if (state is RegisterErrorState) {
+          EasyLoading.showError('Failed with Error',
+              maskType: EasyLoadingMaskType.black);
+        }
+        if (state is RegisterSuccessState) {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => Name()));
+          EasyLoading.showSuccess(
+            'Your data saved successfully',
+            maskType: EasyLoadingMaskType.black,
+          );
+        }
+      },
       builder: (context, state) {
         return Scaffold(
           backgroundColor: APP_MAIN_COLOR,
@@ -79,7 +97,8 @@ class SignUp extends StatelessWidget {
                                       child: MyTextField(
                                           hint: "Email",
                                           iconData: Icons.email_outlined,
-                                          controller: SignUpBloc.get(context).emailController,
+                                          controller: RegisterBloc.get(context)
+                                              .emailController,
                                           isSecure: false),
                                     ),
                                     Divider(
@@ -91,14 +110,20 @@ class SignUp extends StatelessWidget {
                                       child: MyTextField(
                                         hint: "Password",
                                         iconData: Icons.lock_outline,
-                                        controller: SignUpBloc.get(context).passwordController,
-                                        isSecure: SignUpBloc.get(context).visibility,
+                                        controller: RegisterBloc.get(context)
+                                            .passwordController,
+                                        isSecure: RegisterBloc.get(context)
+                                            .visibility,
                                         visibilityOnTap: () {
-                                          SignUpBloc.get(context).visibilityOnTap();
+                                          RegisterBloc.get(context)
+                                              .visibilityOnTap();
                                         },
-                                        suffixIconData: (SignUpBloc.get(context).visibility == true)
-                                            ? Icons.visibility
-                                            : Icons.visibility_off,
+                                        suffixIconData:
+                                            (RegisterBloc.get(context)
+                                                        .visibility ==
+                                                    true)
+                                                ? Icons.visibility
+                                                : Icons.visibility_off,
                                       ),
                                     ),
                                     Divider(
@@ -110,19 +135,20 @@ class SignUp extends StatelessWidget {
                                       child: MyTextField(
                                         hint: "Confirm Password",
                                         iconData: Icons.lock_outline,
-                                        controller: SignUpBloc.get(context)
+                                        controller: RegisterBloc.get(context)
                                             .confirmPasswordController,
-                                        isSecure:
-                                            SignUpBloc.get(context).visibility,
+                                        isSecure: RegisterBloc.get(context)
+                                            .visibility,
                                         visibilityOnTap: () {
-                                          SignUpBloc.get(context)
+                                          RegisterBloc.get(context)
                                               .visibilityOnTap();
                                         },
-                                        suffixIconData: (SignUpBloc.get(context)
-                                                    .visibility ==
-                                                true)
-                                            ? Icons.visibility
-                                            : Icons.visibility_off,
+                                        suffixIconData:
+                                            (RegisterBloc.get(context)
+                                                        .visibility ==
+                                                    true)
+                                                ? Icons.visibility
+                                                : Icons.visibility_off,
                                       ),
                                     ),
                                   ],
@@ -135,28 +161,23 @@ class SignUp extends StatelessWidget {
                             NormalButton(
                                 label: 'Next',
                                 onTap: () {
-                                  SignUpBloc.get(context).userRegister(
-                                    email: SignUpBloc.get(context)
+                                  RegisterBloc.get(context).userRegister(
+                                    email: RegisterBloc.get(context)
                                         .emailController
                                         .text,
-                                    password: SignUpBloc.get(context)
+                                    password: RegisterBloc.get(context)
                                         .confirmPasswordController
                                         .text,
                                   );
-                                  if (SignUpBloc.get(context)
+                                  if (RegisterBloc.get(context)
                                       .emailController
                                       .text
                                       .isNotEmpty) {
-                                    SignUpBloc.get(context).saveUserEmail(
-                                        SignUpBloc.get(context)
+                                    RegisterBloc.get(context).saveUserEmail(
+                                        RegisterBloc.get(context)
                                             .emailController
                                             .text);
                                   }
-
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Name()));
                                 }),
                             SizedBox(
                               height: 10,

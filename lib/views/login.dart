@@ -6,16 +6,37 @@ import 'package:content/components/normal_button.dart';
 import 'package:content/components/social_auth.dart';
 import 'package:content/constants/app_colors.dart';
 import 'package:content/views/home.dart';
-import 'package:content/views/singup.dart';
+import 'package:content/views/register.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginBloc, LoginStates>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is LoginLoadingState) {
+          EasyLoading.show(
+            status: 'loading...',
+            maskType: EasyLoadingMaskType.black,
+          );
+        }
+        if (state is LoginErrorState) {
+          EasyLoading.showError('Failed with Error',
+              maskType: EasyLoadingMaskType.black);
+        }
+        if (state is LoginSuccessState) {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => Home()));
+
+          EasyLoading.showSuccess(
+            'Welcome back ',
+            maskType: EasyLoadingMaskType.black,
+          );
+        }
+      },
       builder: (context, Object? state) {
         return Scaffold(
           backgroundColor: APP_MAIN_COLOR,
@@ -116,26 +137,6 @@ class Login extends StatelessWidget {
                             SizedBox(
                               height: 20,
                             ),
-                            // Row(
-                            //   mainAxisAlignment: MainAxisAlignment.end,
-                            //   children: [
-                            //     Text(
-                            //       'Forget password? ',
-                            //       style: TextStyle(color: DARK_TEXT),
-                            //     ),
-                            //     InkWell(
-                            //       child: Text(
-                            //         'Reset',
-                            //         style: TextStyle(
-                            //           color: GRADIENT_END,
-                            //         ),
-                            //       ),
-                            //       onTap: () {
-                            //         // TODO: Remember password method
-                            //       },
-                            //     ),
-                            //   ],
-                            // ),
                             SizedBox(
                               height: 80,
                             ),
@@ -150,10 +151,6 @@ class Login extends StatelessWidget {
                                       .passwordController
                                       .text,
                                 );
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Home()));
                               },
                             ),
                             SizedBox(
@@ -172,7 +169,7 @@ class Login extends StatelessWidget {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => SignUp()));
+                                            builder: (context) => Register()));
                                   },
                                   child: Text(
                                     'Signup',
