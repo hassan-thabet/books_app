@@ -7,84 +7,155 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     var dimensions = MediaQuery.of(context).size;
     return Scaffold(
-      body: Stack(
+      body: Column(
         children: [
           Container(
-            child: Center(
-              child: Text(
-                'B O O K',
-                style: TextStyle(
-                    fontSize: 60,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500),
-              ),
-            ),
-            height: dimensions.height * 0.35,
-            decoration: BoxDecoration(
-              // color: APP_MAIN_COLOR,
-              gradient: LinearGradient(
-                  begin: Alignment.bottomRight,
-                  end: Alignment.topLeft,
-                  colors: <Color>[
-                    GRADIENT_START,
-                    GRADIENT_END,
-                  ]),
-              borderRadius: BorderRadius.vertical(
-                  bottom: Radius.elliptical(dimensions.width, 80)),
+            height: 220,
+            child: Stack(
+              alignment: AlignmentDirectional.bottomCenter,
+              children: [
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    height: 130, //dimensions.height * 0.20,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.bottomRight,
+                          end: Alignment.topLeft,
+                          colors: <Color>[
+                            GRADIENT_START,
+                            GRADIENT_END,
+                          ]),
+                      borderRadius: BorderRadius.vertical(
+                          bottom: Radius.elliptical(dimensions.width, 40)),
+                    ),
+                  ),
+                ),
+                CircleAvatar(
+                  radius: 88,
+                  backgroundColor: BACKGROUND_COLOR,
+                  child: CircleAvatar(
+                      radius: 85,
+                      backgroundImage:
+                          AssetImage('assets/images/user_placeholder.jpg')),
+                ),
+
+                // Stack(
+                //   alignment: AlignmentDirectional.bottomEnd,
+                //   children: [
+                //
+                //     MaterialButton(
+                //       onPressed: () {},
+                //       child: CircleAvatar(
+                //         backgroundColor: GRADIENT_END,
+                //         child: Icon(
+                //           Icons.camera_alt_rounded,
+                //           color: Colors.black,
+                //         ),
+                //         radius: 20,
+                //       ),
+                //     ),
+                //   ],
+                // ),
+              ],
             ),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Stack(
-                alignment: AlignmentDirectional.bottomEnd,
-                children: [
-                  CircleAvatar(
-                    radius: 80,
-                    backgroundImage: NetworkImage(
-                        'https://images.pexels.com/photos/3224344/pexels-photo-3224344.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'),
-                  ),
-                  MaterialButton(
-                    onPressed: () {},
-                    child: CircleAvatar(
-                      backgroundColor: Colors.orange[100],
-                      child: Icon(
-                        Icons.camera_alt_rounded,
-                        color: Colors.black,
-                      ),
-                      radius: 18,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 10,
-              ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    width: 38,
-                  ),
                   Text(
-                    'Eehab',
+                    'Eehab ',
                     style: TextStyle(fontSize: 25),
                   ),
                   Text(
-                    'Msre',
+                    'El-Masry',
                     style: TextStyle(fontSize: 25),
                   ),
-                  IconButton(
-                      iconSize: 2,
-                      onPressed: () {},
-                      icon: Image.asset(
-                        'assets/icons/pencil.png',
-                        width: 23,
-                      ))
                 ],
               ),
               Text('Reader'),
+              SizedBox(
+                height: 30,
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+                child: ListTile(
+                  leading: Icon(Icons.edit_outlined),
+                  title: Text(
+                    'Edit account',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  tileColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+                child: ListTile(
+                  leading: Icon(Icons.edit_outlined),
+                  title: Text(
+                    'Edit account',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  tileColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+                child: ListTile(
+                  leading: Icon(Icons.edit_outlined),
+                  title: Text(
+                    'Edit account',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  tileColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+                child: ListTile(
+                  leading: Icon(Icons.edit_outlined),
+                  title: Text(
+                    'Edit account',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  tileColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+                child: ListTile(
+                  leading: Icon(Icons.edit_outlined),
+                  title: Text(
+                    'Edit account',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  tileColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                ),
+              ),
             ],
           ),
         ],
