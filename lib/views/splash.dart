@@ -4,7 +4,7 @@ import 'package:content/views/home.dart';
 //import 'package:content/views/home.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'book.dart';
+
 import 'login.dart';
 
 class Splash extends StatelessWidget {

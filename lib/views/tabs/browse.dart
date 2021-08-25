@@ -81,8 +81,9 @@ class Browse extends StatelessWidget {
                           itemCount: 5,
                           itemBuilder: (BuildContext context, int index) {
                             return Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 0),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal:
+                                      0), //معلم انا هنا شلة البادنج عشان كان كبير وخليتو ع العرض بس
                               child: Container(
                                   width: dimensions.width * 0.40,
                                   decoration: BoxDecoration(
@@ -101,7 +102,7 @@ class Browse extends StatelessWidget {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) => Book()));
-                                    },
+                                    }, //معلم هون خليت الدوسة ع الكتاب نفسو
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(12.0),
                                       child: Image.network(
