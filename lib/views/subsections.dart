@@ -1,43 +1,34 @@
 import 'package:content/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
-import '../book.dart';
+import 'book.dart';
 
-class Favorites extends StatelessWidget {
-  const Favorites({Key? key}) : super(key: key);
-
+class Subsections extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var dimensions = MediaQuery.of(context).size;
-
     return Scaffold(
-      backgroundColor: Color(0xFFF5F5F5),
       appBar: AppBar(
-        backgroundColor: Color(0xFFF5F5F5),
-        elevation: 0,
-        title: Text(
-          'FAVORITES',
-          style: TextStyle(color: SELECTED_ICONS, fontSize: 25),
+        backgroundColor: Colors.white,
+        leadingWidth: 700,
+        elevation: 00,
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'new books',
+            style: TextStyle(
+                color: Colors.black, fontSize: 24, fontWeight: FontWeight.w500),
+          ),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.search,
-              color: SELECTED_ICONS,
-            ),
-            iconSize: 30,
-          )
-        ],
       ),
       body: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
         itemCount: 5,
         itemBuilder: (BuildContext context, int index) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
+          return Card(
             child: Container(
+              width: dimensions.width,
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(20)),
               child: Row(
@@ -83,47 +74,53 @@ class Favorites extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 30,
+                        height: 20,
                       ),
-                      Row(
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: APP_MAIN_COLOR,
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.download,
-                                color: Colors.white,
+                      Container(
+                        width: dimensions.width * 0.55,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Text('Flating',
+                                      style: TextStyle(color: Colors.black54)),
+                                  Text(
+                                    '4.4',
+                                    style: TextStyle(
+                                        fontSize: 25, color: Colors.black),
+                                  ),
+                                ],
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          CircleAvatar(
-                            backgroundColor: APP_MAIN_COLOR,
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.read_more,
-                                color: Colors.white,
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Text('Pages',
+                                      style: TextStyle(color: Colors.black54)),
+                                  Text(
+                                    '310',
+                                    style: TextStyle(
+                                        fontSize: 25, color: Colors.black),
+                                  )
+                                ],
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          CircleAvatar(
-                            backgroundColor: APP_MAIN_COLOR,
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.delete,
-                                color: Colors.white,
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Text('Downloads',
+                                      style: TextStyle(color: Colors.black54)),
+                                  Text(
+                                    '30',
+                                    style: TextStyle(
+                                        fontSize: 25, color: Colors.black),
+                                  )
+                                ],
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ],
                   ),

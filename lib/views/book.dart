@@ -222,6 +222,125 @@ class Book extends StatelessWidget {
                         SizedBox(
                           height: 20,
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Column(
+                              children: [
+                                Text(
+                                  'Eehab',
+                                  style: TextStyle(fontSize: 27),
+                                ),
+                                Text(
+                                  'Rate this book',
+                                  style: TextStyle(
+                                      fontSize: 18, color: Colors.black54),
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.star,
+                                      color: Colors.amber,
+                                      size: 35,
+                                    ),
+                                    Icon(
+                                      Icons.star,
+                                      color: Colors.amber,
+                                      size: 35,
+                                    ),
+                                    Icon(
+                                      Icons.star_border,
+                                      color: Colors.black45,
+                                      size: 35,
+                                    ),
+                                    Icon(
+                                      Icons.star_border,
+                                      color: Colors.black45,
+                                      size: 35,
+                                    ),
+                                    Icon(
+                                      Icons.star_border,
+                                      color: Colors.black45,
+                                      size: 35,
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                          color: Colors.black,
+                          width: double.infinity,
+                          height: 2,
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Column(
+                                  children: [
+                                    Text(
+                                      'Post by:',
+                                      style: TextStyle(fontSize: 25),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        MaterialButton(
+                                          onPressed: () {},
+                                          child: CircleAvatar(
+                                            radius: 20,
+                                            backgroundImage: AssetImage(
+                                                'assets/icons/facebook.png'),
+                                          ),
+                                        ),
+                                        MaterialButton(
+                                          onPressed: () {},
+                                          child: CircleAvatar(
+                                            radius: 20,
+                                            backgroundImage: AssetImage(
+                                                'assets/icons/facebook.png'),
+                                          ),
+                                        ),
+                                        MaterialButton(
+                                          onPressed: () {},
+                                          child: CircleAvatar(
+                                            radius: 20,
+                                            backgroundImage: AssetImage(
+                                                'assets/icons/facebook.png'),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                          color: Colors.black,
+                          width: double.infinity,
+                          height: 2,
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
                         Text(
                           'You may also like :',
                           style: TextStyle(
