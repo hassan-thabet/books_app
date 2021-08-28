@@ -4,6 +4,8 @@ import 'package:content/views/book.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../subsections.dart';
+
 class Browse extends StatelessWidget {
   const Browse({Key? key}) : super(key: key);
   @override
@@ -36,19 +38,22 @@ class Browse extends StatelessWidget {
                 children: [
                   Align(
                       alignment: Alignment.topRight,
-                      child: Container(
-                        alignment: Alignment.center,
-                        height: 52,
-                        width: 52,
-                        decoration: BoxDecoration(
-                          color: BACKGROUND_COLOR.withAlpha(1000),
-                          shape: BoxShape.circle,
-                        ),
-                        child: SvgPicture.asset(
-                          "assets/icons/menu.svg",
-                          width: 22,
-                          height: 22,
-                          color: APP_MAIN_COLOR,
+                      child: MaterialButton(
+                        onPressed: () {},
+                        child: Container(
+                          alignment: Alignment.center,
+                          height: 52,
+                          width: 52,
+                          decoration: BoxDecoration(
+                            color: BACKGROUND_COLOR.withAlpha(1000),
+                            shape: BoxShape.circle,
+                          ),
+                          child: SvgPicture.asset(
+                            "assets/icons/menu.svg",
+                            width: 22,
+                            height: 22,
+                            color: APP_MAIN_COLOR,
+                          ),
                         ),
                       )),
                   Text(
@@ -66,61 +71,17 @@ class Browse extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'newly added',
+                        'new books',
                         style: TextStyle(fontSize: 20),
                       ),
-                      TextButton(onPressed: () {}, child: Text('see more'))
-                    ],
-                  ),
-                  Container(
-                      width: dimensions.width,
-                      height: dimensions.height * 0.28,
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 5,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal:
-                                      0), //معلم انا هنا شلة البادنج عشان كان كبير وخليتو ع العرض بس
-                              child: Container(
-                                  width: dimensions.width * 0.40,
-                                  decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Color(0xFFF5F5F5),
-                                        blurRadius: 8,
-                                        spreadRadius: 1,
-                                        offset: Offset(1, 1),
-                                      )
-                                    ],
-                                  ),
-                                  child: MaterialButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => Book()));
-                                    }, //معلم هون خليت الدوسة ع الكتاب نفسو
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(12.0),
-                                      child: Image.network(
-                                        'https://covers.feedbooks.net/item/4119726.jpg?size=large',
-                                        fit: BoxFit.fill,
-                                      ),
-                                    ),
-                                  )),
-                            );
-                          })),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'highest rated',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      TextButton(onPressed: () {}, child: Text('see more'))
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subsections()));
+                          },
+                          child: Text('see more...'))
                     ],
                   ),
                   Container(
@@ -167,10 +128,266 @@ class Browse extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'most downloaded',
+                        'books more read',
                         style: TextStyle(fontSize: 20),
                       ),
-                      TextButton(onPressed: () {}, child: Text('see more'))
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subsections()));
+                          },
+                          child: Text('see more...'))
+                    ],
+                  ),
+                  Container(
+                      width: dimensions.width,
+                      height: dimensions.height * 0.29,
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 5,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 0),
+                              child: Container(
+                                  width: dimensions.width * 0.40,
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Color(0xFFF5F5F5),
+                                        blurRadius: 8,
+                                        spreadRadius: 1,
+                                        offset: Offset(1, 1),
+                                      )
+                                    ],
+                                  ),
+                                  child: MaterialButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Book()));
+                                    },
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(12.0),
+                                      child: Image.network(
+                                        'https://covers.feedbooks.net/item/4119726.jpg?size=large',
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                                  )),
+                            );
+                          })),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'More books download',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subsections()));
+                          },
+                          child: Text('see more...'))
+                    ],
+                  ),
+                  Container(
+                      width: dimensions.width,
+                      height: dimensions.height * 0.29,
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 5,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 0),
+                              child: Container(
+                                  width: dimensions.width * 0.40,
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Color(0xFFF5F5F5),
+                                        blurRadius: 8,
+                                        spreadRadius: 1,
+                                        offset: Offset(1, 1),
+                                      )
+                                    ],
+                                  ),
+                                  child: MaterialButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Book()));
+                                    },
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(12.0),
+                                      child: Image.network(
+                                        'https://covers.feedbooks.net/item/4119726.jpg?size=large',
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                                  )),
+                            );
+                          })),
+                  Container(
+                    height: 140,
+                    child: PageView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        Container(
+                          height: 140,
+                          width: double.infinity,
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                  radius: 70,
+                                  backgroundImage: NetworkImage(
+                                      'https://www.arageek.com/wp-content/uploads/2017/12/Kahlil-Gibran.jpg')),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    'Gibran kleel Gibran',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  //هون في مشكلة لما الكتابة تزيد عن حجم الشاشة بيدي ايرور
+                                  Text(
+                                    'Gibran wanted you to write',
+                                    style: TextStyle(color: Colors.black45),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 140,
+                          width: double.infinity,
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                  radius: 70,
+                                  backgroundImage: NetworkImage(
+                                      'https://www.arageek.com/wp-content/uploads/2017/12/Kahlil-Gibran.jpg')),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    'Gibran kleel Gibran',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  //هون في مشكلة لما الكتابة تزيد عن حجم الشاشة بيدي ايرور
+                                  Text(
+                                    'Gibran wanted you to write',
+                                    style: TextStyle(color: Colors.black45),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Author's books",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subsections()));
+                          },
+                          child: Text('see more...'))
+                    ],
+                  ),
+                  Container(
+                      width: dimensions.width,
+                      height: dimensions.height * 0.29,
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 5,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 0),
+                              child: Container(
+                                  width: dimensions.width * 0.40,
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Color(0xFFF5F5F5),
+                                        blurRadius: 8,
+                                        spreadRadius: 1,
+                                        offset: Offset(1, 1),
+                                      )
+                                    ],
+                                  ),
+                                  child: MaterialButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Book()));
+                                    },
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(12.0),
+                                      child: Image.network(
+                                        'https://covers.feedbooks.net/item/4119726.jpg?size=large',
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                                  )),
+                            );
+                          })),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "children's books",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Subsections()));
+                          },
+                          child: Text('see more...'))
                     ],
                   ),
                   Container(
