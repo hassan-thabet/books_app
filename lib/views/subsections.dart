@@ -1,6 +1,5 @@
 import 'package:content/constants/app_colors.dart';
 import 'package:flutter/material.dart';
-
 import 'book.dart';
 
 class Subsections extends StatelessWidget {
@@ -8,128 +7,120 @@ class Subsections extends StatelessWidget {
   Widget build(BuildContext context) {
     var dimensions = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leadingWidth: 700,
-        elevation: 00,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
+        backgroundColor: Colors.grey[100],
+        appBar: AppBar(
+          backgroundColor: Colors.grey[100],
+          leadingWidth: 700,
+          elevation: 00,
+          title: Text(
             'new books',
             style: TextStyle(
                 color: Colors.black, fontSize: 24, fontWeight: FontWeight.w500),
           ),
+          leading: IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.arrow_back),
+            color: Colors.black,
+          ),
         ),
-      ),
-      body: ListView.builder(
-        shrinkWrap: true,
-        scrollDirection: Axis.vertical,
-        itemCount: 5,
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-            child: Container(
-              width: dimensions.width,
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(20)),
-              child: Row(
-                children: [
-                  Container(
-                    width: dimensions.width * 0.40,
-                    child: MaterialButton(
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Book()));
-                      }, //معلم هون خليت الدوسة ع الكتاب نفسو
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(12.0),
-                          child: Image.network(
-                            'https://covers.feedbooks.net/item/4119726.jpg?size=large',
-                            fit: BoxFit.fill,
+        body: ListView.builder(
+            itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Card(
+                        child: Container(
+                          height: 150,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(50)),
                           ),
                         ),
                       ),
-                    ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Name The Book',
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Name The Reading',
-                        style: TextStyle(
-                          fontSize: 17,
-                          color: Colors.black87,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        width: dimensions.width * 0.55,
+                      MaterialButton(
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Book()));
+                        },
                         child: Row(
                           children: [
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  Text('Flating',
-                                      style: TextStyle(color: Colors.black54)),
-                                  Text(
-                                    '4.4',
-                                    style: TextStyle(
-                                        fontSize: 25, color: Colors.black),
+                            Container(
+                              height: 180,
+                              width: 110,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: Colors.black),
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              child: Image.network(
+                                'https://covers.feedbooks.net/item/4119726.jpg?size=large',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Name The Book',
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    color: SELECTED_ICONS,
+                                    fontWeight: FontWeight.w800,
                                   ),
-                                ],
-                              ),
-                            ),
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  Text('Pages',
-                                      style: TextStyle(color: Colors.black54)),
-                                  Text(
-                                    '310',
-                                    style: TextStyle(
-                                        fontSize: 25, color: Colors.black),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  Text('Downloads',
-                                      style: TextStyle(color: Colors.black54)),
-                                  Text(
-                                    '30',
-                                    style: TextStyle(
-                                        fontSize: 25, color: Colors.black),
-                                  )
-                                ],
-                              ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  'Name The Reading',
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                    color: APP_MAIN_COLOR,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.star,
+                                      color: Colors.amber,
+                                      size: 20,
+                                    ),
+                                    Icon(
+                                      Icons.star,
+                                      color: Colors.amber,
+                                      size: 20,
+                                    ),
+                                    Icon(
+                                      Icons.star_border,
+                                      color: Colors.black45,
+                                      size: 20,
+                                    ),
+                                    Icon(
+                                      Icons.star_border,
+                                      color: Colors.black45,
+                                      size: 20,
+                                    ),
+                                    Icon(
+                                      Icons.star_border,
+                                      color: Colors.black45,
+                                      size: 20,
+                                    ),
+                                  ],
+                                )
+                              ],
                             ),
                           ],
                         ),
                       ),
                     ],
                   ),
-                ],
-              ),
-            ),
-          );
-        },
-      ),
-    );
+                )));
   }
 }
