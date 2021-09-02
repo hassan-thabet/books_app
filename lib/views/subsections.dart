@@ -10,18 +10,27 @@ class Subsections extends StatelessWidget {
         backgroundColor: Colors.grey[100],
         appBar: AppBar(
           backgroundColor: Colors.grey[100],
-          leadingWidth: 700,
           elevation: 00,
           title: Text(
             'new books',
-            style: TextStyle(
-                color: Colors.black, fontSize: 24, fontWeight: FontWeight.w500),
+            style: TextStyle(color: Colors.black54, fontSize: 20),
           ),
           leading: IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.arrow_back),
-            color: Colors.black,
-          ),
+              onPressed: () {},
+              icon: Icon(
+                Icons.arrow_back,
+                color: Colors.black54,
+              )),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.search,
+                color: Colors.black54,
+              ),
+              iconSize: 30,
+            ),
+          ],
         ),
         body: ListView.builder(
             itemBuilder: (context, index) => Padding(
@@ -67,20 +76,31 @@ class Subsections extends StatelessWidget {
                                 Text(
                                   'Name The Book',
                                   style: TextStyle(
-                                    fontSize: 25,
-                                    color: SELECTED_ICONS,
+                                    fontSize: 20,
+                                    color: Colors.black87,
                                     fontWeight: FontWeight.w800,
                                   ),
                                 ),
                                 SizedBox(
                                   height: 5,
                                 ),
-                                Text(
-                                  'Name The Reading',
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    color: APP_MAIN_COLOR,
-                                  ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      'composing: ',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.black38,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Name The Reading',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: APP_MAIN_COLOR,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                                 SizedBox(
                                   height: 30,

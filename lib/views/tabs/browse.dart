@@ -37,7 +37,7 @@ class Browse extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Align(
-                      alignment: Alignment.topRight,
+                      alignment: AlignmentDirectional.topEnd,
                       child: MaterialButton(
                         onPressed: () {},
                         child: Container(
