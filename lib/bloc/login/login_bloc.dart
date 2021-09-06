@@ -32,19 +32,22 @@ class LoginBloc extends Cubit<LoginStates>
     )
         .then((value) {
       print(value.user!.uid + ' Logged in successfully');
-      saveUserIsAuth(true);
+      saveUserIsAuth(true, value.user!.uid);
+      print(value.user!.uid);
       emit((LoginSuccessState()));
     }).catchError((error) {
       print('error : ' + error.toString());
       emit((LoginErrorState()));
     });
   }
-}
 
-Future<void> saveUserIsAuth(
-  bool? isAuth,
-) async {
-  final preferences = await SharedPreferences.getInstance();
-  preferences.setBool('is_auth', isAuth!);
-  print('user isAuth saved on shared preferences');
+  Future<void> saveUserIsAuth(
+    bool? isAuth,
+    String? uId,
+  ) async {
+    final preferences = await SharedPreferences.getInstance();
+    preferences.setBool('is_auth', isAuth!);
+    preferences.setString('uId', uId!);
+    print('user $uId saved successfully');
+  }
 }

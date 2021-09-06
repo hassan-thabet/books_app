@@ -77,10 +77,13 @@ class RegisterBloc extends Cubit<RegisterStates> {
   Future pickUserImage() async {
     ImagePicker imagePicker = ImagePicker();
     await imagePicker.pickImage(source: ImageSource.gallery).then((image) {
+      //pickedImage = XFile(image!.path);
+      print(image!.path);
       emit((RegisterPickImageState()));
-      pickedImage = image;
     });
   }
+
+  Future uploadImage() async {}
 
   Future<void> saveUserInfo(
     String? firstName,

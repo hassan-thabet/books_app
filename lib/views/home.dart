@@ -1,3 +1,4 @@
+import 'package:content/bloc/home/home_bloc.dart';
 import 'package:content/constants/app_colors.dart';
 import 'package:content/views/tabs/browse.dart';
 import 'package:content/views/tabs/favorites.dart';
@@ -15,6 +16,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int currentTab = 0;
+
   void _onItemTapped(int index) {
     setState(() {
       currentTab = index;
@@ -30,6 +32,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    HomeBloc.get(context).getUserData();
     return Scaffold(
       body: _screens.elementAt(currentTab),
       bottomNavigationBar: BottomNavigationBar(

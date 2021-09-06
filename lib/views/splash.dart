@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:content/constants/app_colors.dart';
 import 'package:content/views/home.dart';
-//import 'package:content/views/home.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

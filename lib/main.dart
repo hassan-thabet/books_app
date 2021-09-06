@@ -1,3 +1,4 @@
+import 'package:content/bloc/home/home_bloc.dart';
 import 'package:content/views/splash.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -10,23 +11,6 @@ import 'constants/app_colors.dart';
 void main() {
   runApp(MyApp());
 }
-// void configLoading() {
-//   EasyLoading.instance
-//     ..displayDuration = const Duration(milliseconds: 2000)
-//     ..indicatorType = EasyLoadingIndicatorType.fadingCircle
-//     ..loadingStyle = EasyLoadingStyle.dark
-//     ..indicatorSize = 45.0
-//     ..radius = 10.0
-//     ..progressColor = Colors.yellow
-//     ..backgroundColor = Colors.green
-//     ..indicatorColor = Colors.yellow
-//     ..textColor = Colors.yellow
-//     ..maskColor = Colors.black.withOpacity(0.5)
-//     ..userInteractions = true
-//     ..dismissOnTap = false;
-//     // ..customAnimation = CustomAnimation();
-// }
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -34,6 +18,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => LoginBloc()),
         BlocProvider(create: (context) => RegisterBloc()),
+        BlocProvider(create: (context) => HomeBloc()),
       ],
       child: FutureBuilder(
         future: Firebase.initializeApp(),
