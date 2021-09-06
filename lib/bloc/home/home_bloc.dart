@@ -15,12 +15,10 @@ class HomeBloc extends Cubit<HomeStates> {
   String? email;
   String? phoneNumber;
 
-  /// ده المتغير بتاع الصوره و قيمته null
-  String? userImage;
+  //String? userImage;
 
-  /// لو عايز تجرب صوره حقيقيه اعمل كومنت للسطر بتاع المتغير اللي فوق و شغل السطر اللي تحت و حط القيمه مكان الرابط
-  /// ومتنساش تعمل Hot Reload عشان مش هتشتغل بالريستارت
-  //String? userImage = "https://www.bentbusinessmarketing.com/wp-content/uploads/2013/02/35844588650_3ebd4096b1_b-934x460.jpg";
+  String? userImage =
+      "https://www.bentbusinessmarketing.com/wp-content/uploads/2013/02/35844588650_3ebd4096b1_b-934x460.jpg";
 
   void getUserData() async {
     emit((HomeLoadingState()));

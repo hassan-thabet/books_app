@@ -52,25 +52,19 @@ class Profile extends StatelessWidget {
                               CircleAvatar(
                                   radius: 70,
                                   backgroundColor: BACKGROUND_COLOR,
-                                  child:
-
-                                      /// هنا في ال child هنحط الشرط
-                                      (HomeBloc.get(context).userImage == null)
-
-                                          /// هنا علامه ؟ معناها لو الشرط اتحقق هتحط الويدجت دي
-                                          ? CircleAvatar(
-                                              radius: 70,
-                                              backgroundImage: AssetImage(
-                                                  'assets/images/user_placeholder.jpg'))
-
-                                          /// ههنا علامه : معناها لو الشرط متحققش هتحط الودجيت دي
-                                          : CircleAvatar(
-                                              radius: 70,
-                                              backgroundImage: NetworkImage(
-                                                  HomeBloc.get(context)
-                                                      .userImage
-                                                      .toString()),
-                                            )),
+                                  child: (HomeBloc.get(context).userImage ==
+                                          null)
+                                      ? CircleAvatar(
+                                          radius: 70,
+                                          backgroundImage: AssetImage(
+                                              'assets/images/user_placeholder.jpg'))
+                                      : CircleAvatar(
+                                          radius: 70,
+                                          backgroundImage: NetworkImage(
+                                              HomeBloc.get(context)
+                                                  .userImage
+                                                  .toString()),
+                                        )),
                             ],
                           ),
                           MaterialButton(

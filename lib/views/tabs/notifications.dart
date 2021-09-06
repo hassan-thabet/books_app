@@ -1,7 +1,5 @@
 import 'package:content/constants/app_colors.dart';
-
 import 'package:flutter/material.dart';
-
 import 'notificationpage.dart';
 
 class Notifications extends StatelessWidget {

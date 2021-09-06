@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:content/components/logo.dart';
 import 'package:content/constants/app_colors.dart';
 import 'package:content/views/home.dart';
 import 'package:flutter/material.dart';
@@ -26,13 +27,7 @@ class Splash extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: APP_MAIN_COLOR,
-      body: Center(
-        child: Text(
-          'B O O K',
-          style: TextStyle(
-              fontSize: 60, color: Colors.white, fontWeight: FontWeight.w500),
-        ),
-      ),
+      body: Center(child: Logo()),
     );
   }
 }

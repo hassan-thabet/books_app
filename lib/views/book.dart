@@ -18,7 +18,9 @@ class Book extends StatelessWidget {
           leading: IconButton(
             iconSize: 30,
             icon: Icon(Icons.arrow_back),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
           backgroundColor: APP_MAIN_COLOR,
           elevation: 0,
@@ -249,8 +251,8 @@ class Book extends StatelessWidget {
                                       size: 35,
                                     ),
                                     Icon(
-                                      Icons.star_border,
-                                      color: Colors.black45,
+                                      Icons.star_half,
+                                      color: Colors.amber,
                                       size: 35,
                                     ),
                                     Icon(

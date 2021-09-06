@@ -1,37 +1,14 @@
 import 'package:content/constants/app_colors.dart';
+import 'package:content/views/book.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'book.dart';
 
-class Subsections extends StatelessWidget {
+class Author extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var dimensions = MediaQuery.of(context).size;
     return Scaffold(
-        backgroundColor: Colors.grey[100],
         appBar: AppBar(
-          backgroundColor: Colors.grey[100],
-          elevation: 00,
-          title: Text(
-            'new books',
-            style: TextStyle(color: Colors.black54, fontSize: 20),
-          ),
-          iconTheme: IconThemeData(color: Colors.black54),
-          // leading: IconButton(
-          //     onPressed: () {},
-          //     icon: Icon(
-          //       Icons.arrow_back,
-          //       color: Colors.black54,
-          //     )),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.search,
-              ),
-              iconSize: 30,
-            ),
-          ],
+          title: Text('Gibraan Khalil Gibraan'),
+          backgroundColor: APP_MAIN_COLOR,
         ),
         body: ListView.builder(
             itemBuilder: (context, index) => Padding(
