@@ -227,7 +227,12 @@ class Profile extends StatelessWidget {
                                 ),
                               ),
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Writer()));
+                                },
                                 child: Text(
                                   'account settings',
                                   style: TextStyle(
@@ -260,12 +265,7 @@ class Profile extends StatelessWidget {
                                 height: 10,
                               ),
                               TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Writer()));
-                                },
+                                onPressed: () {},
                                 child: Text(
                                   'Author settings',
                                   style: TextStyle(
