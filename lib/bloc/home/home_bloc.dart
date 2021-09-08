@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:content/bloc/home/home_states.dart';
+import 'package:content/views/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,9 +16,6 @@ class HomeBloc extends Cubit<HomeStates> {
   String? lastName;
   String? email;
   String? phoneNumber;
-
-  //String? userImage;
-
   String? userImage =
       "https://www.bentbusinessmarketing.com/wp-content/uploads/2013/02/35844588650_3ebd4096b1_b-934x460.jpg";
 
@@ -30,14 +29,12 @@ class HomeBloc extends Cubit<HomeStates> {
     uId = value as String?;
 
     /// get data from FireStore using user UID
-
     FirebaseFirestore.instance
         .collection('users')
         .doc(uId)
         .get()
         .then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
-        print(documentSnapshot.data());
         firstName = documentSnapshot.get(FieldPath(['first_name']));
         lastName = documentSnapshot.get(FieldPath(['last_name']));
         email = documentSnapshot.get(FieldPath(['email']));
@@ -47,5 +44,14 @@ class HomeBloc extends Cubit<HomeStates> {
         print('Document does not exist on the database');
       }
     });
+  }
+
+  void signOut() async {
+    await FirebaseAuth.instance.signOut();
+
+    final preferences = await SharedPreferences.getInstance();
+    preferences.setBool('is_auth', false);
+    emit((ProfileTabSignOutState()));
+    print('SignedOut from profile tab and delete is auth boolean value');
   }
 }

@@ -2,11 +2,10 @@ import 'package:content/bloc/home/home_bloc.dart';
 import 'package:content/bloc/home/home_states.dart';
 import 'package:content/components/normal_button.dart';
 import 'package:content/constants/app_colors.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import '../login.dart';
 import 'writer.dart';
 
 class Profile extends StatelessWidget {
@@ -14,7 +13,12 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     var dimensions = MediaQuery.of(context).size;
     return BlocConsumer<HomeBloc, HomeStates>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is ProfileTabSignOutState) {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => Login()));
+        }
+      },
       builder: (context, state) {
         return Scaffold(
           body: SingleChildScrollView(
@@ -278,7 +282,9 @@ class Profile extends StatelessWidget {
                     ),
                     NormalButton(
                       label: 'Log out',
-                      onTap: () {},
+                      onTap: () async {
+                        HomeBloc.get(context).signOut();
+                      },
                     ),
                   ],
                 ),
