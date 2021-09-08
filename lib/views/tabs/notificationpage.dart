@@ -66,8 +66,7 @@ class NotificationPage extends StatelessWidget {
           height: 30,
         ),
         IconButton(onPressed: () {}, icon: Icon(Icons.menu_rounded)),
-        Expanded(
-            child: Padding(
+        Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Container(
             width: double.infinity,
@@ -178,7 +177,7 @@ class NotificationPage extends StatelessWidget {
               ),
             ),
           ),
-        ))
+        )
       ]),
     );
   }
